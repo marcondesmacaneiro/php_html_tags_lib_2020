@@ -1,35 +1,37 @@
 <?php
-require_once 'autoload.php';
+require_once 'interface_tag_meta.php';
+class Meta implements InterfaceTagMeta {
+    
+    private $metaTag = [];
+    
+    private function getTag() {
+        return '<meta %conteudo />';
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getMetaTag() {
+        return $this->metaTag;
+    }
 
-// Monta o html.
-$oHtml = new Html();
-$sHtml = $oHtml->getHtml();
+    /**
+     * {@inheritdoc}
+     */
+    public function setMetaTag($sTagMeta) {
+        $this->metaTag[] = $sTagMeta;
+    }
+    
+    /**
+     * Cria a tag meta.
+     * @param string $sAtributo
+     * @param string $sValor
+     * @param string $sContent
+     * @param string $sValorContent
+     */
+    public function criaTagMeta($sAtributo = '', $sValor = '', $sContent = 'content', $sValorContent = '') {
+        $sTag = str_replace('%conteudo', "{$sAtributo}='{$sValor}' {$sContent}='{$sValorContent}'", $this->getTag());
+        $this->setMetaTag($sTag);
+    }
 
-// Monta o titulo.
-$oTitulo = new Titulo();
-$oTitulo->setTitulo('Bem vindo!');
-$oTitulo->setStyle('font-weight', 'bold');
-
-// Monta as tags meta.
-$oMeta = new Meta();
-$oMeta->criaTagMeta('name', 'author', 'content', 'Lucas Valente');
-
-// Monta as tags span.
-$oSpan = new Span();
-$oSpan->setSpan('Teste 01');
-$oSpan->setSpan('Teste 02');
-$oSpan->setSpan('Teste 03');
-$oSpan->setStyle('color', 'red');
-
-// Monta a div e põe o span como conteúdo.
-$oDiv = new Div();
-$oDiv->setStyle('background-color', 'black');
-$oDiv->setStyle('width', '50%');
-$oDiv->setStyle('margin-left', '25%');
-$oDiv->setConteudoDiv($oSpan->getSpan());
-
-$sHtml = str_replace('%title', $oTitulo->getTitulo()             , $sHtml);
-$sHtml = str_replace('%meta' , implode('', $oMeta->getMetaTag()) , $sHtml);
-$sHtml = str_replace('%div'  , $oDiv->getDiv()                   , $sHtml);
-
-echo $sHtml;
+}
