@@ -3,13 +3,18 @@
 class Ul {
     
     private $aLista = array();
+    private $sClass;
+
+    public function __construct($sClass) {
+        $this->sClass = $sClass;
+    }
 
     public function addUl($sAtributo) {
         $this->aLista[] = $sAtributo;
     }
 
-    public function criaUl($sClass) {
-        $sUl = '<ul class="'.$sClass.'">';
+    public function __toString() {
+        $sUl = '<ul class="'.$this->sClass.'">';
         foreach ($this->aLista as $sItemLista) {
             $sUl .= $sItemLista;
         }

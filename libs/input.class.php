@@ -14,7 +14,7 @@ class Input {
         $this->sPlaceholder = $sPlaceholder;
     }
 
-    public function criaInput() {
+    public function __toString() {
         return '<input type="'.$this->sType.'" class="'.$this->sClass.'" id="'.$this->sId.'" placeholder="'.$this->sPlaceholder.'">';
     }
  }

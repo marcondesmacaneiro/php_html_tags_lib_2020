@@ -10,7 +10,7 @@ class Li {
         $this->sConteudo = $sConteudo;
     }
 
-    public function criaLi() {
+    public function __toString() {
         return '<li class="'.$this->sClass.'">'.$this->sConteudo.'</li>';
     }
 }
