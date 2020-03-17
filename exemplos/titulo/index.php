@@ -1,7 +1,7 @@
 <?php
 include '../../autoload.php';
 
-// Monta o html
+// Monta o html.
 $oHtml = new Html();
 $sHtml = $oHtml->getHtml();
 
