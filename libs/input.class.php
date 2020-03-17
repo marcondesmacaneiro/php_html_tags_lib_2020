@@ -1,18 +1,19 @@
 <?php
-
 class Input {
 
-    private $type;
-    private $class;
-    private $id;
+    private $sType;
+    private $sClass;
+    private $sId;
+    private $sPlaceholder;
     
-    public function __construct($type, $class, $id) {
-        $this->type = $type;
-        $this->class = $class;
-        $this->id = $id;
+    public function __construct($sType, $sClass, $sId, $sPlaceholder) {
+        $this->sType = $sType;
+        $this->sClass = $sClass;
+        $this->sId = $sId;
+        $this->sPlaceholder = $sPlaceholder;
     }
 
-    public function criaInput() {
-        return '<input type="'.$this->type.'" class="'.$this->class.'" id="'.$this->id.'">';
+    public function __toString() {
+        return '<input type="'.$this->sType.'" class="'.$this->sClass.'" id="'.$this->sId.'" placeholder="'.$this->sPlaceholder.'">';
     }
  }
