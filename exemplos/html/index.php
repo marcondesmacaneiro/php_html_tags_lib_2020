@@ -1,20 +1,15 @@
 <?php
-include '../../autoload.php';
+require('../../autoload.php');
+echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">';
 
-// Monta o html.
-$oHtml = new Html();
-$sHtml = $oHtml->getHtml();
+$html = new Html("pt-br");
+$head = new head();
+$body = new Body("bg-dark");
 
-// Monta o titulo.
-$oTitulo = new Titulo();
-$oTitulo->setTitulo('Bem vindo!');
-$oTitulo->setStyle('font-weight', 'bold');
+$head->addElementHead("<title>Página de Testes</title>");
+$body->addElementBody("<h1>Título H1</h1>");
+$html->addElementHtml($head->getHead());
+$html->addElementHtml($body->getBody());
 
-// Monta as tags meta.
-$oMeta = new Meta();
-$oMeta->criaTagMeta('name', 'author', 'content', 'Lucas Valente');
 
-$sHtml = str_replace('%title', $oTitulo->getTitulo()             , $sHtml);
-$sHtml = str_replace('%meta' , implode('', $oMeta->getMetaTag()) , $sHtml);
-
-echo $sHtml;
+echo $html->getHtml();
