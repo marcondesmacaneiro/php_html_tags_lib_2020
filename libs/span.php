@@ -25,7 +25,7 @@ class Span implements InterfaceTag {
             $this->span = array_map([$this, 'setStyleSpan'], $this->span);
         }
         
-        return $this->span;
+        return implode('<br>', $this->span);
     }
     
     /**
