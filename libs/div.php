@@ -1,4 +1,5 @@
 <?php
+require_once 'interface_tag.php';
 /**
  * Classe para o elemento Div.
  */
@@ -45,6 +46,10 @@ class Div implements InterfaceTag {
     
     public function __construct() {
         $this->setDiv($this->getTag());
+    }
+    
+    public function __toString() {
+        return $this->getDiv();
     }
     
 }

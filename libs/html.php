@@ -28,7 +28,6 @@ class Html {
                         %meta
                     </head>
                     <body>
-                        %div
                     </body>
                 </html>";
     }   

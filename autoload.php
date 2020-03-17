@@ -1,15 +1,7 @@
 <?php
-/**
- * Arquivo para carregar as classes necessárias.
- * @since 10/03/2020
- */
-
-spl_autoload_register('loadMesmoNivel');
-
-function loadMesmoNivel($sNomeClasse) {
-    $sExt     = '.php';
-    $sCaminho = $sNomeClasse.$sExt;
-    if(file_exists($sCaminho)) {
-        require_once $sCaminho;
+spl_autoload_register(function($className) {
+    $file = $_SERVER["DOCUMENT_ROOT"].'/php_html_tags_lib_2020/libs/' . $className . '.php';
+    if (file_exists($file)) {
+        require_once $file;
     }
-}
+});

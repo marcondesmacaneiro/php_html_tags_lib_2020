@@ -48,4 +48,8 @@ class Span implements InterfaceTag {
         return $array;
     }
 
+    public function __toString() {
+        return $this->getSpan();
+    }
+    
 }
