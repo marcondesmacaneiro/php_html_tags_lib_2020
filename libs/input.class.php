@@ -1,5 +1,4 @@
 <?php
-
 class Input {
 
     private $sType;
