@@ -1,5 +1,5 @@
 <?php
-class Html {
+class Html2 {
     
     /**
      * @var string
